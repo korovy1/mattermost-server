@@ -638,6 +638,9 @@ func (a *App) GetUsersByUsernames(usernames []string, asAdmin bool, viewRestrict
 
 func (a *App) sanitizeProfiles(users []*model.User, asAdmin bool) []*model.User {
 	for _, u := range users {
+		if u == nil {
+			continue
+		}
 		a.SanitizeProfile(u, asAdmin)
 	}
 
